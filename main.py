@@ -8,8 +8,11 @@ asked = []
 
 questions_answers = { 
     1: ["Who won the 2021 F1 Championship?", 'Max Verstappen', 'Lewis Hamilton','Christiano Ronaldo', 'Fernando Alonso ' ,'Max Verstappen',1],
-  
-} 
+    2: ["Which NBA team won the NBA in 2017?",'Cleveland Caveliers  ','Golden state warriors','Manchester utd', 'Milwaukee Bucks','Golden state warriors',2],
+    3: ["What material is used to make the outer shell of a cricket ball?", 'Leather','Cork', 'Twine','Rubber','Leather',1],
+}
+
+
 
 def randomiser():
     global qnum
@@ -25,18 +28,18 @@ class QuizStarter:
     background_color="lightgrey"
 
     self.heading_label=Label(window, text = "General Knowledge Sports quiz", font =( "Times","18","bold"),bg=background_color)
-    self.heading_label.place(x=300, y=17)
+    self.heading_label.place(x=30, y=10)
 
     self.var1=IntVar()
 
     self.user_label=Label(window, text="Please Enter your Username Below: ", font=( "Tw Cen MT","18","bold"),bg=background_color)
-    self.user_label.place(x=20 , y= 8756)
+    self.user_label.place(x=20 , y= 80)
 
     self.entry_box=Entry(window)
-    self.entry_box.grid(row=1,padx=180, pady=120)
+    self.entry_box.grid(row=1,padx=150, pady=120)
 
     self.continue_button = Button(window, text="Continue", font=( "Helvetica","13","bold"), bg="darkgrey",command=self.name_collection)
-    self.continue_button.grid(row=2,padx=7, pady=10)
+    self.continue_button.grid(row=2,padx=5, pady=5)
 
     self.Exit_button = Button(window, text="Exit Quiz", font=( "Helvetica","13","bold"), bg="darkgrey",command=self.name_collection)
     self.continue_button.grid(row=2,padx=4, pady=4)
@@ -147,6 +150,6 @@ if __name__== "__main__":
     start_object = QuizStarter(window)
 
    
-    start_object = QuizStarter(window)
+  
 
     window.mainloop()
