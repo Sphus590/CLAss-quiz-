@@ -9,7 +9,7 @@ asked = []
 questions_answers = { 
     1: ["Who won the 2021 F1 Championship?", 'Max Verstappen', 'Lewis Hamilton','Christiano Ronaldo', 'Fernando Alonso ' ,'Max Verstappen',1],
   
-}
+} 
 
 def randomiser():
     global qnum
@@ -139,7 +139,13 @@ if __name__== "__main__":
     window = Tk()
     window.title("12CSC Quiz")
     window.geometry("600x600")
-    
+    bg_image = Image.open("Lebron james.jpg")
+    bg_image = bg_image.resize((1000,600),Image.ANTIALIAS)
+    bg_image = ImageTk.PhotoImage(bg_image)
+    image_label= Label(window, image=bg_image)
+    image_label.place(x=0, y=0, relwidth=1, relheight=1)
+    start_object = QuizStarter(window)
+
    
     start_object = QuizStarter(window)
 
