@@ -1,22 +1,39 @@
 from tkinter import *
 import random
 from PIL import Image, ImageTk
-
+score = 0
 names = []
 global questions_answers
 asked = []
 
 questions_answers = { 
     1: ["Who won the 2021 F1 Championship?", 'Max Verstappen', 'Lewis Hamilton','Christiano Ronaldo', 'Fernando Alonso ' ,'Max Verstappen',1],
+  
     2: ["Which NBA team won the NBA in 2017?",'Cleveland Caveliers  ','Golden state warriors','Manchester utd', 'Milwaukee Bucks','Golden state warriors',2],
+  
     3: ["What material is used to make the outer shell of a cricket ball?", 'Leather','Cork', 'Twine','Rubber','Leather',1],
+  
+    4: ["How many sports are there in the world?", '5','1000', '20,000','8000','8000',4],
+  
+    5: ["The olympics are held every how many years?", '10','4', '5','2','4',2],
+  
+    6: ["What is the national sport of India?", 'Hockey','Cricket', 'Football','Rugby','Hockey',1],
+
+    7: ["How many days is a cricket test match played ?", '2','10', '5','3','5',3],
+
+    8: ["how many weight classes in boxing?", '5','25', '17','1','17',3],
+
+    9: ["Who played for the Chicago bulls?", 'Lebron james','Micheal Jordan', 'Steph curry','Diangelo russel ','Micheal Jordan',2],
+
+    10: ["What is used in tennis to hit the ball?", 'Raquet','Bat', 'Stick','Hand','Raquet',1],
+
 }
 
 
 
 def randomiser():
     global qnum
-    qnum = random.randint(1,3)
+    qnum = random.randint(1,10)
     if qnum not in asked:
       asked.append(qnum)
     elif qnum in asked:
@@ -106,7 +123,6 @@ class Quiz:
  
    def test_progress(self):
       global score
-      score = 0
       scr_label=self.score_label
       choice=self.var1.get()
       if len(asked)>9:
