@@ -1,10 +1,15 @@
 from tkinter import *
 import random
 from PIL import Image, ImageTk
+from tkinter import messagebox
+
 score = 0
 names = []
-global questions_answers
 asked = []
+
+
+
+
 
 questions_answers = { 
     1: ["Who won the 2021 F1 Championship?", 'Max Verstappen', 'Lewis Hamilton','Christiano Ronaldo', 'Fernando Alonso ' ,'Max Verstappen',1],
@@ -67,16 +72,34 @@ class QuizStarter:
 
 
   
-  def name_collection(self):
-        name=self.entry_box.get()
-        names.append(name)
-        self.heading_label.destroy()
-        self.user_label.destroy()
-        self.entry_box.destroy()
-        self.continue_button.destroy()
-        Quiz(window)
+  def name_collection(self): 
+      name = self.entry_box.get()
+       
+      if name == '':
+            messagebox.showerror('Name is Necessary!', 'Please enter your name!')
+      elif len(name) > 15: 
+        messagebox.showerror('AN ERROR HAS BEEN MADE!', 'Please enter a name between 1 and 15 Letters')
+      elif name.isnumeric():
+            messagebox.showerror('AN ERROR HAS BEEN MADE!', 'Name should ONLY!! have letters please')
+      elif not name.isalpha(): 
+        messagebox.showerror('AN ERROR HAS BEEN MADE!', 'No Symbols Please! Please Try Again!')
+      else:
 
-class Quiz:
+            names.append(name)  
+            print (names)
+            self.heading_label.destroy() 
+            self.user_label.destroy() 
+            self.entry_box.destroy() 
+            self.continue_button.destroy() 
+            Quizstarter(window) 
+
+
+
+
+
+
+
+class Quizstarter:
 
    def __init__(self, parent):
     background_color="lightgrey"
