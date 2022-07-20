@@ -75,7 +75,7 @@ class Quizinitiator: # Quiz initiator
         messagebox.showerror('AN ERROR HAS BEEN MADE!', 'Please enter a name between 1 and 15 Letters')# To make sure the users name is between 1 and 15 letters 
       elif name.isnumeric():
             messagebox.showerror('AN ERROR HAS BEEN MADE!', 'Name should ONLY!! have letters please')# To make sure the user has entred no numbers in their name 
-      elif not name.isalpha():
+      elif not name.replace(' ','').isalpha(): # .replace to allow spaces 
         messagebox.showerror('AN ERROR HAS BEEN MADE!', 'No Symbols Accepted ,Try Again!')# To make sure the user has no symbols in thier name
       else:
 
