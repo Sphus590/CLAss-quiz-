@@ -156,7 +156,7 @@ class StartQuiz:
           score+=0 # score stays the same 
           scr_label.configure(text="The correct answer was: "+ questions_answers[qnum][5] ) # if asnwer is incorrect, will display corrrect asnwer
           self.confirm_button.config(text="confirm") #Confirm Button
-          
+          self.final_screen() #to open the final screen of the quiz 
       else:
             if choice==0:# score stays the same if user does not select an option
               self.confirm_button.config(text="Try Again, you must select an option please submit again " ) # error message
