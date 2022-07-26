@@ -3,36 +3,6 @@ import random # for selection of random questions
 from PIL import Image, ImageTk # for images to be imported 
 from tkinter import messagebox # for messagebox to be imported
 
-score = 0 #list 
-names = [] #list
-asked = [] #list
-
-
-
-
-
-questions_answers = { #questions for the user
-    1: ["Who won the 2021 F1 Championship?", 'Max Verstappen', 'Lewis Hamilton','Christiano Ronaldo', 'Fernando Alonso ' ,'Max Verstappen',1],#question 1. options are called index 6 
- 
-    2: ["Which NBA team won the NBA in 2017?",'Cleveland Caveliers  ','Golden state warriors','Manchester utd', 'Milwaukee Bucks','Golden state warriors',2],#question 2
- 
-    3: ["What material is used to make the outer shell of a cricket ball?", 'Leather','Cork', 'Twine','Rubber','Leather',1],#question 3
- 
-    4: ["How many sports are there in the world?", '5','1000', '20,000','8000','8000',4],#question 4
- 
-    5: ["The Nba happens every how many years?", '10','1', '5','2','1',2],#question 5
- 
-    6: ["What is the national sport of India?", 'Hockey','Cricket', 'Football','Rugby','Hockey',1],#question 6
-
-    7: ["How many days is a cricket test match played ?", '2','10', '5','3','5',3],#question 7
-
-    8: ["how many weight classes in boxing?", '5','25', '17','1','17',3],#question 8 
-
-    9: ["Who played for the Chicago bulls?", 'Lebron james','Micheal Jordan', 'Steph curry','Diangelo russel ','Micheal Jordan',2], #question 9
-
-    10: ["What is used in tennis to hit the ball?", 'Raquet','Bat', 'Stick','Hand','Raquet',1], #question 10
-
-}
 
 
 
@@ -47,20 +17,21 @@ def randomselect(): #selects random questions
 
 class Quizinitiator: # Quiz initiator 
   def __init__(self, parent):
-    background_color="lightgrey" # background colour
-
-    self.heading_label=Label(window, text = "General Knowledge Sports quiz", font =( "Times","18","bold"),bg=background_color)
+    background_color="Black" # background colour
+    text_color="white" 
+    
+    self.heading_label=Label(window, text = "General Knowledge Sports quiz", font =( "Times","18","bold"),bg=background_color,fg=text_color)
     self.heading_label.place(x=30, y=10) # The quiz heading
 
     self.var1=IntVar()
 
-    self.user_label=Label(window, text="Please Enter your Username Below: ", font=( "Tw Cen MT","18","bold"),bg=background_color)
+    self.user_label=Label(window, text="Please Enter your Username Below: ", font=( "Tw Cen MT","18","bold"),bg=background_color,fg=text_color)
     self.user_label.place(x=20 , y= 80) # The name instruction
 
     self.entry_box=Entry(window)
     self.entry_box.grid(row=1,padx=150, pady=120) # Name entrybox
 
-    self.continue_button = Button(window, text="Continue", font=( "Helvetica","13","bold"), bg="darkgrey",command=self.username_entry)
+    self.continue_button = Button(window, text="Continue", font=( "Helvetica","13","bold"), bg= background_color,fg=text_color,command=self.username_entry)
     self.continue_button.grid(row=2,padx=5, pady=5) # Continue button 
 
    
@@ -96,7 +67,8 @@ class Quizinitiator: # Quiz initiator
 class StartQuiz:
 
    def __init__(self, parent):
-    background_color="lightgrey" # background colour
+    background_color="Black" # background colour
+    text_color="white"  
  
  
     self.quiz_frame = Frame(parent, bg = background_color, padx=40, pady=40)
@@ -104,21 +76,21 @@ class StartQuiz:
 
     randomselect() # Selects random questions
 
-    self.question_label=Label(window, text = questions_answers[qnum][0], font =( "Tw Cen MT","18","bold"))
+    self.question_label=Label(window, text = questions_answers[qnum][0], font =( "Tw Cen MT","18","bold"),bg=background_color,fg=text_color )
     self.question_label.grid(row= 0, padx=10, pady=10) # label for questions 
 
     self.var1=IntVar()
 
-    self.option1 = Radiobutton(window, text = questions_answers[qnum][1], font=("Helvetica", "12"), bg=background_color, value=1, variable=self.var1, pady=10)
+    self.option1 = Radiobutton(window, text = questions_answers[qnum][1], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=1, variable=self.var1, pady=10)
     self.option1.grid(row=1, sticky=W) # Answer option 1 
 
-    self.option2 = Radiobutton(window, text = questions_answers[qnum][2], font=("Helvetica", "12"), bg=background_color, value=2, variable=self.var1, pady=10)
+    self.option2 = Radiobutton(window, text = questions_answers[qnum][2], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=2, variable=self.var1, pady=10)
     self.option2.grid(row=2, sticky=W) # Answer option 2
 
-    self.option3 = Radiobutton(window, text = questions_answers[qnum][3], font=("Helvetica", "12"), bg=background_color, value=3, variable=self.var1, pady=10)
+    self.option3 = Radiobutton(window, text = questions_answers[qnum][3], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=3, variable=self.var1, pady=10)
     self.option3.grid(row=3, sticky=W) # Answer option 3
 
-    self.option4 = Radiobutton(window, text = questions_answers[qnum][4], font=("Helvetica", "12"), bg=background_color, value=4, variable=self.var1, pady=10)
+    self.option4 = Radiobutton(window, text = questions_answers[qnum][4], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=4, variable=self.var1, pady=10)
     self.option4.grid(row=4, sticky=W) # Answer option 4
 
     self.confirm_button = Button(window, text="Confrim",bg="white",command=self.test_progression )
@@ -196,16 +168,16 @@ class finish:
         self.finish_frame = Frame(finish_window, width=700, height=600,bg=background_color)
         self.finish_frame.grid(row=1)
 
-        self.finish_heading = Label(finish_window,text='Thank You For Attempting The Quiz  ',  font=('Tw Cen Mt', 22, 'bold'), bg='white') # heading of the end screen 
+        self.finish_heading = Label(finish_window,text='Thank You For Attempting The Quiz  ',  font=('Tw Cen Mt', 22, 'bold'), bg='black',fg='white') # heading of the end screen 
         self.finish_heading.place(x=15, y=35) # position of heading
 
-        self.exit_button = Button(finish_window,text='Exit',width=10,bg='white',font=('Tw Cen Mt', 12, 'bold'),command=self.eliminate_finish,)# for the exit button that eliminates the quiz
+        self.exit_button = Button(finish_window,text='Exit',width=10,bg='black',fg='white',font=('Tw Cen Mt', 12, 'bold'),command=self.eliminate_finish,)# for the exit button that eliminates the quiz
         self.exit_button.place(x=260, y=200)# position of final exit button 
 
-        self.invite_label = Label(finish_window, text='Please try again later :)' + str(names),font=('Tw Cen Mt', 12, 'bold'),width=40, bg='white') # label to invite the user to try again 
+        self.invite_label = Label(finish_window, text='Please try again later :)' + str(names),font=('Tw Cen Mt', 12, 'bold'),width=40, bg='black',fg='white') # label to invite the user to try again 
         self.invite_label.place(x=110, y=80) # position of this label
        
-        self.final_score = Label(finish_window, text='Your final score is ' + str(score), font=('Tw Cen Mt', 12, 'bold'), width=40, bg='white') # label to show the users final score
+        self.final_score = Label(finish_window, text='Your final score is ' + str(score), font=('Tw Cen Mt', 12, 'bold'), width=40, bg='black',fg='white') # label to show the users final score
         self.final_score.place(x=110, y=110) # position of this label
        
  
@@ -217,13 +189,39 @@ class finish:
       self.invite_label.destroy()# will destroy end screen invite label
       finish_window.destroy()# will destroy finish window
 
+score = 0 
+names = [] #list
+asked = [] #list
+
+questions_answers = { #questions for the user
+    1: ["Who won the 2021 F1 Championship?", 'Max Verstappen', 'Lewis Hamilton','Christiano Ronaldo', 'Fernando Alonso ' ,'Max Verstappen',1],#question 1. options are called index 6 
+ 
+    2: ["Which NBA team won the NBA in 2017?",'Cleveland Caveliers  ','Golden state warriors','Manchester utd', 'Milwaukee Bucks','Golden state warriors',2],#question 2
+ 
+    3: ["What material is used to make the outer shell of a cricket ball?", 'Leather','Cork', 'Twine','Rubber','Leather',1],#question 3
+ 
+    4: ["How many sports are there in the world?", '5','1000', '20,000','8000','8000',4],#question 4
+ 
+    5: ["The Nba happens every how many years?", '10','1', '5','2','1',2],#question 5
+ 
+    6: ["What is the national sport of India?", 'Hockey','Cricket', 'Football','Rugby','Hockey',1],#question 6
+
+    7: ["How many days is a cricket test match played ?", '2','10', '5','3','5',3],#question 7
+
+    8: ["how many weight classes in boxing?", '5','25', '17','1','17',3],#question 8 
+
+    9: ["Who played for the Chicago bulls?", 'Lebron james','Micheal Jordan', 'Steph curry','Diangelo russel ','Micheal Jordan',2], #question 9
+
+    10: ["What is used in tennis to hit the ball?", 'Raquet','Bat', 'Stick','Hand','Raquet',1], #question 10
+
+}
 
 #my programs runs below 
 if __name__== "__main__":
     window = Tk()
-    window.title("12CSC Quiz")
+    window.title("12CSC Quiz Guransh")
     window.geometry("600x600")
-    bg_image = Image.open("Lebron james.jpg")# file of background image
+    bg_image = Image.open("LebronJames.jpg")# file of background image
     bg_image = bg_image.resize((1000,600),Image.ANTIALIAS)
     bg_image = ImageTk.PhotoImage(bg_image)
     image_label= Label(window, image=bg_image) # imagelabel
