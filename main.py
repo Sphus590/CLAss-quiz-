@@ -68,7 +68,7 @@ class StartQuiz:
 
    def __init__(self, parent):
     background_color="Black" # background colour
-    text_color="white"  
+    text_color="red"  
  
  
     self.quiz_frame = Frame(parent, bg = background_color, padx=40, pady=40)
@@ -208,7 +208,7 @@ questions_answers = { #questions for the user
 
     7: ["How many days is a cricket test match played ?", '2','10', '5','3','5',3],#question 7
 
-    8: ["how many weight classes in boxing?", '5','25', '17','1','17',3],#question 8 
+    8: ["How many weight classes in boxing?", '5','25', '17','1','17',3],#question 8 
 
     9: ["Who played for the Chicago bulls?", 'Lebron james','Micheal Jordan', 'Steph curry','Diangelo russel ','Micheal Jordan',2], #question 9
 
