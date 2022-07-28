@@ -20,25 +20,25 @@ class Quizinitiator: # Quiz initiator
     background_color="Black" # background colour
     text_color="white" 
     
-    self.heading_label=Label(window, text = "General Knowledge Sports quiz", font =( "Times","18","bold"),bg=background_color,fg=text_color)
-    self.heading_label.place(x=30, y=10) # The quiz heading
+    self.title_label=Label(window, text = "General Knowledge Sports quiz", font =( "Times","18","bold"),bg=background_color,fg=text_color)
+    self.title_label.place(x=30, y=10) # The quiz heading
 
-    self.var1=IntVar()
+    self.option_picker=IntVar()
 
-    self.user_label=Label(window, text="Please Enter your Username Below: ", font=( "Tw Cen MT","18","bold"),bg=background_color,fg=text_color)
-    self.user_label.place(x=20 , y= 80) # The name instruction
+    self.instruction_label=Label(window, text="Please Enter your Username Below: ", font=( "Tw Cen MT","18","bold"),bg=background_color,fg=text_color)
+    self.instruction_label.place(x=20 , y= 80) # The name instruction
 
-    self.entry_box=Entry(window)
-    self.entry_box.grid(row=1,padx=150, pady=120) # Name entrybox
+    self.username_entrybox=Entry(window)
+    self.username_entrybox.grid(row=1,padx=150, pady=120) # Name entrybox
 
-    self.continue_button = Button(window, text="Continue", font=( "Helvetica","13","bold"), bg= background_color,fg=text_color,command=self.username_entry)
-    self.continue_button.grid(row=2,padx=5, pady=5) # Continue button 
+    self.proceed_button = Button(window, text="Continue", font=( "Helvetica","13","bold"), bg= background_color,fg=text_color,command=self.username_entry)
+    self.proceed_button.grid(row=2,padx=5, pady=5) # Continue button 
 
    
 
 
   def username_entry(self): # Controls the entry of names
-      name = self.entry_box.get()
+      name = self.username_entrybox.get()
        # Start of error handling 
       if name == '':             # To make sure the user has entred a username
             messagebox.showerror('Name is Necessary!', 'Please enter your username!') # To make sure the user has entred a username
@@ -52,10 +52,10 @@ class Quizinitiator: # Quiz initiator
 
             names.append(name)  
             print (names)
-            self.heading_label.destroy() #will destroy quiz heading
-            self.user_label.destroy() #will destroy name instructions
-            self.entry_box.destroy() #will destroy username enterybox 
-            self.continue_button.destroy() #will destroy continue button
+            self.title_label.destroy() #will destroy quiz heading
+            self.instruction_label.destroy() #will destroy name instructions
+            self.username_entrybox.destroy() #will destroy username enterybox 
+            self.proceed_button.destroy() #will destroy continue button
             StartQuiz(window) # This will open the questions page of the quiz
 
 
@@ -79,22 +79,22 @@ class StartQuiz:
     self.question_label=Label(window, text = questions_answers[qnum][0], font =( "Tw Cen MT","18","bold"),bg=background_color,fg=text_color )
     self.question_label.grid(row= 0, padx=10, pady=10) # label for questions 
 
-    self.var1=IntVar()
+    self.option_picker=IntVar()
 
-    self.option1 = Radiobutton(window, text = questions_answers[qnum][1], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=1, variable=self.var1, pady=10)
-    self.option1.grid(row=1, sticky=W) # Answer option 1 
+    self.possibility1 = Radiobutton(window, text = questions_answers[qnum][1], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=1, variable=self.option_picker, pady=10)
+    self.possibility1.grid(row=1, sticky=W) # Answer option 1 
 
-    self.option2 = Radiobutton(window, text = questions_answers[qnum][2], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=2, variable=self.var1, pady=10)
-    self.option2.grid(row=2, sticky=W) # Answer option 2
+    self.possibility2 = Radiobutton(window, text = questions_answers[qnum][2], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=2, variable=self.option_picker, pady=10)
+    self.possibility2.grid(row=2, sticky=W) # Answer option 2
 
-    self.option3 = Radiobutton(window, text = questions_answers[qnum][3], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=3, variable=self.var1, pady=10)
-    self.option3.grid(row=3, sticky=W) # Answer option 3
+    self.possibility3 = Radiobutton(window, text = questions_answers[qnum][3], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=3, variable=self.option_picker, pady=10)
+    self.possibility3.grid(row=3, sticky=W) # Answer option 3
 
-    self.option4 = Radiobutton(window, text = questions_answers[qnum][4], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=4, variable=self.var1, pady=10)
-    self.option4.grid(row=4, sticky=W) # Answer option 4
+    self.possibility4 = Radiobutton(window, text = questions_answers[qnum][4], font=("Helvetica", "12"), bg=background_color,fg=text_color, value=4, variable=self.option_picker, pady=10)
+    self.possibility4.grid(row=4, sticky=W) # Answer option 4
 
-    self.confirm_button = Button(window, text="Confrim",bg="white",command=self.test_progression )
-    self.confirm_button.grid(row=6) # confirm button which leads you to the next question
+    self.confirm_key = Button(window, text="Confrim",bg="white",command=self.test_progression )
+    self.confirm_key.grid(row=6) # confirm button which leads you to the next question
     self.score_label  = Label(window, text =
                              'score')
     self.score_label.grid(row= 7)
@@ -106,44 +106,44 @@ class StartQuiz:
      
    def questions_setup(self):
      randomselect()
-     self.var1.set(0)
+     self.option_picker.set(0)
      self.question_label.config(text=questions_answers[qnum][0])
-     self.option1.config(text=questions_answers[qnum][1])
-     self.option2.config(text=questions_answers[qnum][2])
-     self.option3.config(text=questions_answers[qnum][3])
-     self.option4.config(text=questions_answers[qnum][4])
+     self.possibility1.config(text=questions_answers[qnum][1])
+     self.possibility2.config(text=questions_answers[qnum][2])
+     self.possibility3.config(text=questions_answers[qnum][3])
+     self.possibility4.config(text=questions_answers[qnum][4])
 
  
    def test_progression (self): # for score indicator
       global score # sore needs to be accessed by everyone
       scr_label=self.score_label
-      choice=self.var1.get() # to store the option the user has chosen 
+      choice=self.option_picker.get() # to store the option the user has chosen 
       if len(asked)>9: # To see if its the last question adn wether to end the quiz or not
         if choice == questions_answers[qnum][6]: #checking if its the right answer in index 6
           score +=1 # adds one point to the tally when answer is correct
           scr_label.configure(text=score) # displays new points gained everytime a question is answered correctly
-          self.confirm_button.config(text="Confirm")# will change the button name to Confirm
+          self.confirm_key.config(text="Confirm")# will change the button name to Confirm
           self.final_screen()# to open the final screen of the quiz 
         else:
           score+=0 # score stays the same 
           scr_label.configure(text="The correct answer was: "+ questions_answers[qnum][5] ) # if asnwer is incorrect, will display corrrect asnwer
-          self.confirm_button.config(text="confirm") #Confirm Button
+          self.confirm_key.config(text="confirm") #Confirm Button
           self.final_screen() #to open the final screen of the quiz 
       else:
             if choice==0:# score stays the same if user does not select an option
-              self.confirm_button.config(text="Try Again, you must select an option please submit again " ) # error message
-              choice=self.var1.get() #Stil get the answer if they didnt chose it
+              self.confirm_key.config(text="Try Again, you must select an option please submit again " ) # error message
+              choice=self.option_picker.get() #Stil get the answer if they didnt chose it
             else:
               if choice == questions_answers[qnum][6]: # if user answer is correct
                 score+=1 # adds 1 point to score tally
                 scr_label.configure(text=score)
-                self.confirm_button.config(text="confirm")
+                self.confirm_key.config(text="confirm")
                 self.questions_setup() # moves onto the next question
  
               else:
                   score+=0 # if user answer is incorrect score stays the same
                   scr_label.configure(text="Incorrect!! The correct answer was: " + questions_answers[qnum][5])
-                  self.confirm_button.config(text="Confirm")
+                  self.confirm_key.config(text="Confirm")
                   self.questions_setup()# moves onto the next question
        
 
