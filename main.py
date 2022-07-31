@@ -15,7 +15,7 @@ def randomselect(): #selects random questions
       randomselect()
      
 
-class Quizinitiator: # Quiz initiator 
+class Quizinitiator: # Quiz initiator, main page of the quiz, leads user to questions page.
   def __init__(self, parent):
     background_color="Black" # background colour
     text_color="white" 
@@ -64,7 +64,7 @@ class Quizinitiator: # Quiz initiator
 
 
 
-class StartQuiz:
+class StartQuiz: # main questions window, this is where users play the quiz. 
 
    def __init__(self, parent):
     background_color="Black" # background colour
@@ -104,17 +104,17 @@ class StartQuiz:
     self.leave.place(x=243, y=300)  
      
      
-   def questions_setup(self):
-     randomselect()
-     self.option_picker.set(0)
-     self.question_label.config(text=questions_answers[qnum][0])
-     self.possibility1.config(text=questions_answers[qnum][1])
-     self.possibility2.config(text=questions_answers[qnum][2])
-     self.possibility3.config(text=questions_answers[qnum][3])
-     self.possibility4.config(text=questions_answers[qnum][4])
+   def questions_setup(self): #question setup 
+     randomselect() # randomises questions 
+     self.option_picker.set(0) #sets value to 0 
+     self.question_label.config(text=questions_answers[qnum][0]) #displays the questions being asked
+     self.possibility1.config(text=questions_answers[qnum][1]) # radiobutton displaying answer possibility 1
+     self.possibility2.config(text=questions_answers[qnum][2]) # radiobutton displaying answer possibility 2
+     self.possibility3.config(text=questions_answers[qnum][3]) # radiobutton displaying answer possibility 3
+     self.possibility4.config(text=questions_answers[qnum][4]) # radiobutton displaying answer possibility 4
 
  
-   def test_progression (self): # for score indicator
+   def test_progression (self): # Shows the user their score 
       global score # sore needs to be accessed by everyone
       scr_label=self.score_label
       choice=self.option_picker.get() # to store the option the user has chosen 
@@ -155,7 +155,7 @@ class StartQuiz:
 
 
 
-class finish:
+class finish: # Fnal page of the quiz, displays thank you message and asks them to try again later.
 
 
   def __init__(self):
@@ -182,7 +182,7 @@ class finish:
        
  
  
-  def eliminate_finish(self):
+  def eliminate_finish(self): # will destroy all widgets below
       self.finish_frame.destroy()# will destroy finish frame label 
       self.finish_heading.destroy()# will destroy end screen heading 
       self.exit_button.destroy()# will destroy end screen exit button 
